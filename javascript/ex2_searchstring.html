@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+    <script>
+    function Search(){
+      var text1 = document.getElementById('text1').value;
+      var text2 = document.getElementById('text2').value;
+      var a = document.querySelector('input[name="ch"]:checked').value;
+      if(a==1){
+        if(text2==""||text1==""){
+          document.getElementById('result').innerHTML = "No input";
+        }
+        else{
+          var r = new RegExp(text2, 'g');
+          var Search = text1.match(r);
+          if(Search==null){
+            document.getElementById('result').innerHTML = "0";
+          }
+          else{
+            document.getElementById('result').innerHTML = text1.match(r).length;;
+          }
+        }
+      }
+      else if(a==2){
+        if(text2==""||text1==""){
+          document.getElementById('result').innerHTML = "No input";
+        }
+        else{
+          var r = new RegExp(text2, 'gi');
+          var Search = text1.match(r);
+          if(Search==null){
+            document.getElementById('result').innerHTML = "0";
+          }
+          else{
+
+            document.getElementById('result').innerHTML = text1.match(r).length;;
+          }
+        }
+      }
+    }
+    </script>
+<body>
+  <center>Text Input: <textarea rows="4" cols="50" id="text1"></textarea><br><br>
+    Sensitive Case:<input type="radio" name="ch" value="1" >Yes
+    <input type="radio" name="ch" value="2">No<br><br>
+    Search: <input type="text" id="text2"><br><br>
+    <button type="button" onclick="Search()">Search</button><br><br>
+    Result for Search: <span id="result"><span></center>
+    </body>
+    </html>
